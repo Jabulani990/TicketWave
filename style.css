@@ -1,58 +1,31 @@
-/* Basic styles for the body, header, main, and footer */
-body {
-  font-family: sans-serif;
-  background-image: linear-gradient(to right, #f0f0f0, #ffffff); /* Example gradient */
-}
-
 header {
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  text-align: center; /* Center the text */
-}.logo-container {
-  display: flex;
-  align-items: center;
-}.logo-container img {
-  width: 100px; /* Adjust as needed */
-  margin-right: 10px;
-}.website-name {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.2em;
+    display: flex; /* Enable flexbox for the header */
+    align-items: center; /* Vertically center items in the header */
+    justify-content: space-between; /* Distribute space between logo/title and nav */
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-bottom: 5px solid blue;
 }
 
-main {
-  /* Add your main content styles here */
+#header-content {
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
 }
 
-footer {
-  /* Add your footer styles here */
+nav {
+    display: flex; /* Enable flexbox for the navigation */
 }
 
-/* Styles for specific sections (hero, search, categories, events) */.hero {
-  width: 100%;
-  overflow: hidden;
-}.banner-container {
-  display: flex;
-  animation: slide 10s linear infinite; /* Adjust timing as needed */
-}.banner-container a {
-  display: block;
-  flex: 0 0 100%; /* Each image takes full width */
-}.banner-container img {
-  width: 100%;
-  height: auto;
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
 }
 
-@keyframes slide {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-200%); /* Adjust based on number of images */
-  }
-}.search {
-  /* Add your search section styles here */
-}.categories {
-  /* Add your categories section styles here */
-}.events {
-  /* Add your events section styles here */
+#logo {
+    max-height: 50px;
+    margin-right: 20px;
 }
