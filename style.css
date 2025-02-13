@@ -1,0 +1,58 @@
+/* Basic styles for the body, header, main, and footer */
+body {
+  font-family: sans-serif;
+  background-image: linear-gradient(to right, #f0f0f0, #ffffff); /* Example gradient */
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  text-align: center; /* Center the text */
+}.logo-container {
+  display: flex;
+  align-items: center;
+}.logo-container img {
+  width: 100px; /* Adjust as needed */
+  margin-right: 10px;
+}.website-name {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2em;
+}
+
+main {
+  /* Add your main content styles here */
+}
+
+footer {
+  /* Add your footer styles here */
+}
+
+/* Styles for specific sections (hero, search, categories, events) */.hero {
+  width: 100%;
+  overflow: hidden;
+}.banner-container {
+  display: flex;
+  animation: slide 10s linear infinite; /* Adjust timing as needed */
+}.banner-container a {
+  display: block;
+  flex: 0 0 100%; /* Each image takes full width */
+}.banner-container img {
+  width: 100%;
+  height: auto;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-200%); /* Adjust based on number of images */
+  }
+}.search {
+  /* Add your search section styles here */
+}.categories {
+  /* Add your categories section styles here */
+}.events {
+  /* Add your events section styles here */
+}
