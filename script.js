@@ -4,11 +4,10 @@ const categoryFilter = document.querySelector('.category-filter');
 const dateFilter = document.querySelector('.date-filter');
 const regionFilter = document.querySelector('.region-filter');
 const cityFilter = document.querySelector('.city-filter');
-const eventGrid = document.querySelector('.event-grid'); // Get the event grid container
+const eventGrid = document.querySelector('.event-grid');
 
-let eventsData =; // Store event data here after fetching
+let eventsData =;
 
-// Function to create event cards
 function createEventCard(event) {
     const eventDiv = document.createElement("div");
     eventDiv.classList.add("event-item");
@@ -23,32 +22,40 @@ function createEventCard(event) {
     return eventDiv;
 }
 
-// Function to display events
 function displayEvents(events) {
-    eventGrid.innerHTML = ''; // Clear existing events
+    eventGrid.innerHTML = '';
     events.forEach(event => {
         const eventCard = createEventCard(event);
         eventGrid.appendChild(eventCard);
     });
 }
 
-
 // Fetch event data from JSON
 fetch('data.json')
-  .then(response => response.json())
+  .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
   .then(data => {
-        eventsData = data; // Store the fetched data
-        displayEvents(eventsData); // Initial display of all events
+        eventsData = data;
+        displayEvents(eventsData);
 
-        // Populate city filter (after data is fetched)
-        const cities = [...new Set(data.map(event => event.location.split(',').trim()))]; // Extract unique cities
+        // Populate city filter
+        const cities = [...new Set(data.map(event => event.location.split(',').trim()))];
         cities.forEach(city => {
-          const option = document.createElement('option');
-          option.value = city;
-          option.text = city;
-          cityFilter.appendChild(option);
+            const option = document.createElement('option');
+            option.value = city;
+            option.text = city;
+            cityFilter.appendChild(option);
         });
 
+    })
+  .catch(error => {
+        console.error("Error fetching data:", error);
+        // Display an error message to the user or take other appropriate action
+        eventGrid.innerHTML = "<p>Error loading events. Please try again later.</p>"; // Example error message
     });
 
 
@@ -56,15 +63,15 @@ fetch('data.json')
 function filterEvents() {
     const selectedCategory = categoryFilter.value;
     const selectedDate = dateFilter.value;
-    const selectedRegion = regionFilter.value.toLowerCase(); // Case-insensitive search
+    const selectedRegion = regionFilter.value.toLowerCase();
     const selectedCity = cityFilter.value;
 
     const filteredEvents = eventsData.filter(event => {
-        const eventCategory = event.category || "other"; // Handle missing categories
+        const eventCategory = event.category || "other";
         const eventDate = event.date;
         const eventLocation = event.location.toLowerCase();
 
-      return (
+        return (
             (selectedCategory === "" || eventCategory === selectedCategory) &&
             (selectedDate === "" || eventDate === selectedDate) &&
             (eventLocation.includes(selectedRegion)) &&
@@ -75,30 +82,29 @@ function filterEvents() {
     displayEvents(filteredEvents);
 }
 
-
-
 // Add event listeners to filters
 categoryFilter.addEventListener('change', filterEvents);
 dateFilter.addEventListener('change', filterEvents);
-regionFilter.addEventListener('input', filterEvents); // Use 'input' for real-time filtering
+regionFilter.addEventListener('input', filterEvents);
 cityFilter.addEventListener('change', filterEvents);
 
 
 // Image Slider Functionality (Improved)
 
 const bannerContainer = document.querySelector('.banner-container');
-const bannerImages = bannerContainer.querySelectorAll('img'); // Select all images
-
+const bannerImages = bannerContainer.querySelectorAll('img');
 let currentImageIndex = 0;
 
 function slideImages() {
     bannerImages.forEach((image, index) => {
-        if (index === currentImageIndex) {
-            image.style.opacity = 1; // Show current image
-        } else {
-            image.style.opacity = 0; // Hide other images
-        }
+        image.style.opacity = index === currentImageIndex? 1: 0;
     });
+    currentImageIndex = (currentImageIndex + 1) % bannerImages.length;
+}
+
+if (bannerImages.length > 0) { // Check if there are banner images
+    setInterval(slideImages, 5000);
+}
 
     currentImageIndex = (currentImageIndex + 1) % bannerImages.length;
 }
