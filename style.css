@@ -1,58 +1,154 @@
-/* Basic styles for the body, header, main, and footer */
+/* Basic styles */
 body {
-  font-family: sans-serif;
-  background-image: linear-gradient(to right, #f0f0f0, #ffffff); /* Example gradient */
+    font-family: sans-serif;
+    margin: 0; /* Remove default body margin */
+    background-color: #f4f4f4; /* Softer background */
+    color: #333; /* Darker text for better contrast */
 }
 
 header {
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  text-align: center; /* Center the text */
+    background-color: #333; /* Darker header */
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between; /* Align logo and navigation */
+    align-items: center;
 }.logo-container {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }.logo-container img {
-  width: 100px; /* Adjust as needed */
-  margin-right: 10px;
+    width: 80px; /* Adjust as needed */
+    margin-right: 10px;
 }.website-name {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.2em;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Horizontal navigation */
+}
+
+nav li {
+    margin-left: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
 }
 
 main {
-  /* Add your main content styles here */
+    padding: 20px;
 }
 
 footer {
-  /* Add your footer styles here */
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
 }
 
-/* Styles for specific sections (hero, search, categories, events) */.hero {
-  width: 100%;
-  overflow: hidden;
+/* Hero Section */.hero {
+    overflow: hidden; /* Hide overflowing images */
+    margin-bottom: 20px; /* Space below hero section */
 }.banner-container {
-  display: flex;
-  animation: slide 10s linear infinite; /* Adjust timing as needed */
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Smooth transition */
 }.banner-container a {
-  display: block;
-  flex: 0 0 100%; /* Each image takes full width */
+    flex: 0 0 100%;
 }.banner-container img {
-  width: 100%;
-  height: auto;
+    width: 100%;
+    height: auto;
+    display: block; /* Prevent small gap below images */
 }
 
-@keyframes slide {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-200%); /* Adjust based on number of images */
-  }
-}.search {
-  /* Add your search section styles here */
-}.categories {
-  /* Add your categories section styles here */
-}.events {
-  /* Add your events section styles here */
+/* Search and Filters */.search {
+    margin-bottom: 20px;
+    display: flex; /* Arrange search and filters horizontally */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 10px; /* Add some spacing */
+}.search-input,.filters select,.filters input[type="date"],.filters input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex: 1; /* Make the input fields take available space */
+    min-width: 200px; /* Minimum width for input fields */
+}.filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Categories Section */.categories {
+    margin-bottom: 20px;
+}.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}.category-item {
+    padding: 10px 20px;
+    border: none;
+    background-color: #eee;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth hover effect */
+}.category-item:hover {
+    background-color: #ddd;
+}.category-icon {
+    margin-right: 5px;
+}.category-grid,.event-grid { /* Common grid styles */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px;
+}
+
+/* Events Section */.event-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden; /* Hide overflowing content */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    transition: transform 0.2s;
+}.event-item:hover {
+    transform: scale(1.02);
+}.event-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}.event-item h3 {
+    margin-top: 10px;
+    padding: 0 10px;
+}.event-item p {
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+
+/* Footer Styles */
+footer {
+    padding: 20px;
+    text-align: center;
+}.social-links {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}.social-links a {
+    color: white;
+    text-decoration: none;
+}.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}.footer-links a {
+    color: white;
+    text-decoration: none;
 }
