@@ -1,0 +1,17 @@
+[
+  {
+    "image": "Event2.png",
+    "title": "Event 1 Title",
+    "date": "2023-12-25",
+    "location": "Johannesburg",
+    "price": "R100"
+  },
+  {
+    "image": "Event 1.jpg",
+    "title": "Event 2 Title",
+    "date": "2023-12-31",
+    "location": "Pretoria",
+    "price": "R200"
+  },
+  // ... more events
+]
